@@ -1,34 +1,53 @@
 "use client";
 import { useState, useEffect } from "react";
-import Link from "next/link";
-import { Sun, Moon, Menu, X } from "lucide-react";
-import { usePathname } from "next/navigation";
+import { Menu, X, Sun, Moon } from "lucide-react";
+import { Switch } from "@/components/ui/switch";
 
-export default function Navbar() {
-  const [darkMode, setDarkMode] = useState(true);
+interface NavbarProps {
+  scrollToHome: () => void;
+  scrollToAbout: () => void;
+  scrollToProjects: () => void;
+  scrollToContact: () => void;
+}
+
+export default function Navbar({ 
+  scrollToHome, 
+  scrollToAbout, 
+  scrollToProjects, 
+  scrollToContact 
+}: NavbarProps) {
+  const [activeSection, setActiveSection] = useState<string>('home');
+  const [scrolled, setScrolled] = useState<boolean>(false);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const pathname = usePathname();
+
+
   useEffect(() => {
-    const savedMode = localStorage.getItem("darkMode");
-    if (savedMode !== null) {
-      setDarkMode(savedMode === "true");
-    } else {
-      const prefersDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
-      setDarkMode(prefersDark);
-    }
+   
+    const handleScroll = () => {
+      // Set navbar style on scroll
+      setScrolled(window.scrollY > 50);
+      
+      // Determine which section is in view
+      const scrollPosition = window.scrollY + 100;
+      const sections = document.querySelectorAll('section');
+      
+      sections.forEach(section => {
+        const sectionTop = section.offsetTop;
+        const sectionHeight = section.offsetHeight;
+        const sectionId = section.getAttribute('id') || '';
+        
+        if (
+          scrollPosition >= sectionTop &&
+          scrollPosition < sectionTop + sectionHeight
+        ) {
+          setActiveSection(sectionId);
+        }
+      });
+    };
+
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
   }, []);
-  useEffect(() => {
-    if (darkMode) {
-      document.documentElement.classList.add("dark");
-    } else {
-      document.documentElement.classList.remove("dark");
-    }
-    localStorage.setItem("darkMode", darkMode.toString());
-  }, [darkMode]);
-  
-  const toggleDarkMode = () => {
-    setDarkMode(!darkMode);
-  };
   
   const toggleMenu = () => {
     setIsMenuOpen(!isMenuOpen);
@@ -37,54 +56,47 @@ export default function Navbar() {
   const closeMenu = () => {
     setIsMenuOpen(false);
   };
-
   const navLinks = [
-    { name: "Home", href: "/" },
-    { name: "About", href: "/about" },
-    { name: "Project", href: "/project" },
-    { name: "Contact", href: "/contact" },
+    { name: "Home", id: "home", action: scrollToHome },
+    { name: "About", id: "about", action: scrollToAbout },
+    { name: "Projects", id: "projects", action: scrollToProjects },
+    { name: "Contact", id: "contact", action: scrollToContact },
   ];
-  const isActive = (href:string) => {
-    return pathname === href;
-  };
 
   return (
-    <nav className="bg-gray-800 text-white shadow-lg">
+    <nav className="fixed w-full z-50 dark:bg-gray-800 bg-amber-300 text-gray-900 dark:text-amber-300 shadow-lg font-montserrat">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16">
           {/* Logo */}
           <div className="flex-shrink-0">
-            <Link href="/" className="font-bold text-xl">YourBrand</Link>
+            <button onClick={scrollToHome} className="font-bold text-2xl font-montserrat">Asqara.</button>
           </div>
           
           {/* Desktop Menu */}
           <div className="hidden md:block">
             <div className="ml-10 flex items-center space-x-4">
               {navLinks.map((link) => (
-                <Link 
+                <button
                   key={link.name}
-                  href={link.href}
+                  onClick={() => {
+                    link.action();
+                    closeMenu();
+                  }}
                   className={`px-3 py-2 rounded-md text-sm font-medium transition-colors ${
-                    isActive(link.href)
-                      ? "bg-gray-900 text-white" 
-                      : "hover:bg-gray-700"
+                    activeSection === link.id
+                      ? "bg-gray-900 dark:bg-amber-300 text-amber-300 dark:text-gray-900" 
+                      : "hover:bg-gray-700 hover:text-amber-200 dark:text-amber-300"
                   }`}
                 >
                   {link.name}
-                </Link>
+                </button>
               ))}
             </div>
           </div>
           
           {/* Dark Mode Toggle & Mobile Menu Button */}
-          <div className="flex items-center">
-            <button
-              onClick={toggleDarkMode}
-              className="p-2 rounded-md hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-white mr-2"
-              aria-label="Toggle dark mode"
-            >
-              {darkMode ? <Sun size={20} /> : <Moon size={20} />}
-            </button>
+          <div className="flex items-center gap-4">
+            <Switch />
             
             <div className="md:hidden">
               <button
@@ -104,18 +116,20 @@ export default function Navbar() {
         <div className="md:hidden">
           <div className="px-2 pt-2 pb-3 space-y-1 sm:px-3">
             {navLinks.map((link) => (
-              <Link
+              <button
                 key={link.name}
-                href={link.href}
-                onClick={closeMenu}
-                className={`block px-3 py-2 rounded-md text-base font-medium transition-colors ${
-                  isActive(link.href)
-                    ? "bg-gray-900 text-white" 
+                onClick={() => {
+                  link.action();
+                  closeMenu();
+                }}
+                className={`block w-full px-3 text-center py-2 rounded-md text-base font-medium transition-colors ${
+                  activeSection === link.id
+                    ? "bg-gray-900 text-amber-300 dark:text-amber-300" 
                     : "hover:bg-gray-700"
                 }`}
               >
                 {link.name}
-              </Link>
+              </button>
             ))}
           </div>
         </div>
