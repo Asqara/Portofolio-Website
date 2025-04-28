@@ -1,7 +1,8 @@
 "use client";
 import { useState, useEffect } from "react";
-import { Menu, X, Sun, Moon } from "lucide-react";
+import { Menu, X } from "lucide-react";
 import { Switch } from "@/components/ui/switch";
+
 
 interface NavbarProps {
   scrollToHome: () => void;
@@ -64,7 +65,7 @@ export default function Navbar({
   ];
 
   return (
-    <nav className="fixed w-full z-50 dark:bg-gray-800 bg-amber-300 text-gray-900 dark:text-amber-300 shadow-lg font-montserrat">
+    <nav className="fixed w-full z-50 dark:bg-gray-800 bg-amber-300 text-white dark:text-amber-300 shadow-lg font-montserrat">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16">
           {/* Logo */}
@@ -82,10 +83,10 @@ export default function Navbar({
                     link.action();
                     closeMenu();
                   }}
-                  className={`px-3 py-2 rounded-md text-sm font-medium transition-colors ${
+                  className={`relative inline-block dark:text-amber-300 after:content-[''] after:absolute after:w-0 after:h-[2px] after:bottom-0 after:left-0 dark:after:bg-white after:bg-gray-900 after:transition-all after:duration-500 hover:after:w-full ${
                     activeSection === link.id
-                      ? "bg-gray-900 dark:bg-amber-300 text-amber-300 dark:text-gray-900" 
-                      : "hover:bg-gray-700 hover:text-amber-200 dark:text-amber-300"
+                      ? "text-gray-900 dark:text-white" 
+                      : "hover:text-gray-900 hover:dark:text-amber-300"
                   }`}
                 >
                   {link.name}
@@ -124,8 +125,8 @@ export default function Navbar({
                 }}
                 className={`block w-full px-3 text-center py-2 rounded-md text-base font-medium transition-colors ${
                   activeSection === link.id
-                    ? "bg-gray-900 text-amber-300 dark:text-amber-300" 
-                    : "hover:bg-gray-700"
+                    ? "dark:text-amber-300 underline decoration-gray-900 decoration-2 " 
+                    : "text-gray-900"
                 }`}
               >
                 {link.name}
