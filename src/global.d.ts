@@ -1,4 +1,4 @@
-export { };
+export {};
 
 declare module '*.glb';
 declare module '*.png';
@@ -9,16 +9,12 @@ declare module 'meshline' {
 }
 
 declare global {
-  namespace JSX {
-    interface IntrinsicElements {
-      meshLineGeometry: React.DetailedHTMLProps<React.HTMLAttributes<HTMLElement>, HTMLElement>;
-      meshLineMaterial: React.DetailedHTMLProps<React.HTMLAttributes<HTMLElement>, HTMLElement>;
+  namespace ReactThreeFiber {
+    interface Object3DNode<T, U> extends Record<string, any> {}
+
+    interface ThreeElements {
+      meshLineGeometry: Object3DNode<any, any>;
+      meshLineMaterial: Object3DNode<any, any>;
     }
   }
 }
-
-
-- src/vite-env.d.ts
-/// <reference types="vite/client" />
-declare module '*.glb';
-declare module '*.png';

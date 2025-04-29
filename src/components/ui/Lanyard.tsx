@@ -1,7 +1,8 @@
-
 "use client";
 import { useEffect, useRef, useState } from "react";
 import { Canvas, extend, useFrame } from "@react-three/fiber";
+import { ReactThreeFiber } from '@react-three/fiber';
+
 import {
   useGLTF,
   useTexture,
@@ -18,10 +19,23 @@ import {
   RigidBodyProps,
 } from "@react-three/rapier";
 import { MeshLineGeometry, MeshLineMaterial } from "meshline";
-extend({ MeshLineGeometry, MeshLineMaterial });
 import * as THREE from "three";
 
+// Correctly declare types for MeshLine components
+declare module '@react-three/fiber' {
+  namespace ReactThreeFiber {
+    interface ThreeElements {
+      meshLineGeometry: Object3DNode<any, any>;
+      meshLineMaterial: Object3DNode<any, any>;
+    }
 
+    interface Object3DNode<T, U> extends Record<string, any> {}
+  }
+}
+
+
+// Extend JSX elements with MeshLine components
+extend({ MeshLineGeometry, MeshLineMaterial });
 
 interface LanyardProps {
   position?: [number, number, number];
@@ -281,7 +295,18 @@ function Band({ maxSpeed = 50, minSpeed = 0 }: BandProps) {
           </group>
         </RigidBody>
       </group>
-      
+      <mesh ref={band}>
+        <meshLineGeometry />
+        <meshLineMaterial
+          color="white"
+          depthTest={false}
+          resolution={isSmall ? [1000, 2000] : [1000, 1000]}
+          useMap
+          map={texture}
+          repeat={[-4, 1]}
+          lineWidth={1}
+        />
+      </mesh>
     </>
   );
 }
