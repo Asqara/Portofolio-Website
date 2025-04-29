@@ -61,9 +61,7 @@ export default function Navbar({
 
   return (
     <nav
-      className={`fixed w-full z-50 dark:bg-gray-800 bg-amber-300 text-white dark:text-amber-300 shadow-lg font-montserrat ${
-        scrolled ? "bg-gray-800" : "bg-amber-300"
-      }`} // Apply different background color when scrolled
+      className={`fixed w-full z-50 dark:bg-gray-800 bg-amber-300 text-white dark:text-amber-300 shadow-lg font-montserrat`}
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-16">
