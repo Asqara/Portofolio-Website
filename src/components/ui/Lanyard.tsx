@@ -18,12 +18,10 @@ import {
   RigidBodyProps,
 } from "@react-three/rapier";
 import { MeshLineGeometry, MeshLineMaterial } from "meshline";
+extend({ MeshLineGeometry, MeshLineMaterial });
 import * as THREE from "three";
 
-const cardGLB = "/assets/lanyard/card.glb";
-const lanyard = "/assets/lanyard/lanyard.png";
 
-extend({ MeshLineGeometry, MeshLineMaterial });
 
 interface LanyardProps {
   position?: [number, number, number];
@@ -31,6 +29,8 @@ interface LanyardProps {
   fov?: number;
   transparent?: boolean;
 }
+const cardGLB = "/assets/lanyard/card.glb";
+const lanyard = "/assets/lanyard/lanyard.png";
 
 export default function Lanyard({
   position = [0, 0, 30],
@@ -281,18 +281,7 @@ function Band({ maxSpeed = 50, minSpeed = 0 }: BandProps) {
           </group>
         </RigidBody>
       </group>
-      <mesh ref={band}>
-        <meshLineGeometry />
-        <meshLineMaterial
-          color="white"
-          depthTest={false}
-          resolution={isSmall ? [1000, 2000] : [1000, 1000]}
-          useMap
-          map={texture}
-          repeat={[-4, 1]}
-          lineWidth={1}
-        />
-      </mesh>
+      
     </>
   );
 }
