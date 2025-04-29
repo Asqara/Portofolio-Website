@@ -523,14 +523,13 @@ class Y extends MeshPhysicalMaterial {
     colors: [252, 211, 77], // Amber 300
     ambientColor: 0xFCD34D, // Amber 300 hex
     ambientIntensity: 1,
-    lightIntensity: 200,
+    lightIntensity: 300,
     materialParams: {
       metalness: 0.5,
       roughness: 0.5,
       clearcoat: 1,
       clearcoatRoughness: 0.15,
     },
-    // other parameters remain the same
     minSize: 0.5,
     maxSize: 1,
     size0: 1,

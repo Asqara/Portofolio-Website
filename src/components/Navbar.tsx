@@ -92,24 +92,27 @@ export default function Navbar({
                   {link.name}
                 </button>
               ))}
-              <div className="flex items-center gap-4">
-            <Switch />
+              <div className="hidden md:flex items-center gap-4">
+              <Switch />
+              </div>
+            </div>
             
-            <div className="md:hidden">
+          </div>
+          <div className="flex md:hidden items-center gap-4">
+            <Switch />
+      
+            
+          <div className="md:hidden">
+          
               <button
                 onClick={toggleMenu}
                 className="p-2 rounded-md hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-white"
                 aria-expanded="false"
-              >
+                >
                 {isMenuOpen ? <X size={24} /> : <Menu size={24} />}
               </button>
             </div>
-          </div>
-            </div>
-            
-          </div>
-          
-          {/* Dark Mode Toggle & Mobile Menu Button */}
+                </div>
           
         </div>
       </div>

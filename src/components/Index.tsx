@@ -63,29 +63,25 @@ export default function HomePage() {
       
       <main>
         <section 
-        data-aos="fade-up"
-        data-aos-duration="800"
+        
         ref={homeRef} className="min-h-screen" id="home">
           <HomeSection />
         </section>
         
         <section 
-        data-aos="fade-up"
-        data-aos-duration="800"
+        
         ref={aboutRef} className="min-h-screen" id="about">
           <AboutSection />
         </section>
         
         <section 
-        data-aos="fade-up"
-        data-aos-duration="800"
+        
         ref={projectsRef} className="min-h-screen" id="projects">
           <ProjectsSection />
         </section>
         
         <section 
-        data-aos="fade-up"
-        data-aos-duration="800"
+        
         ref={contactRef} className="min-h-screen" id="contact">
           <ContactSection />
         </section>

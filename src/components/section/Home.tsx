@@ -12,7 +12,7 @@ export default function HomeSection() {
     return (
       <div className='font-montserrat'>
       
-      <div className="flex items-center justify-center min-h-screen bg-gray-100 text-gray-900 dark:bg-gray-900 dark:text-amber-300">
+      <div className="flex items-center justify-center min-h-screen bg-white text-gray-900 dark:bg-gray-900 dark:text-amber-300">
       <div className='absolute top-0 left-0 w-full h-full pointer-events-none z-10'>
 
       <Ballpit 
@@ -33,7 +33,7 @@ export default function HomeSection() {
         <div className="text-center z-20">
         <SplitText
   text="Welcome to"
-  className="md:text-8xl text-3xl font-bold font-montserrat text-gray-900 text-center"
+  className="md:text-8xl text-3xl font-bold font-montserrat dark:text-amber-300 text-gray-900 text-center"
   delay={100}
   animationFrom={{ opacity: 0, transform: 'translate3d(0,50px,0)' }}
   animationTo={{ opacity: 1, transform: 'translate3d(0,0,0)' }}
@@ -45,7 +45,7 @@ export default function HomeSection() {
 
         <SplitText
   text="My Website Portofolio!"
-  className="md:text-8xl text-3xl font-bold font-montserrat text-gray-900 text-center"
+  className="md:text-8xl text-3xl font-bold font-montserrat dark:text-amber-300 text-gray-900 text-center"
   delay={150}
   animationFrom={{ opacity: 0, transform: 'translate3d(0,50px,0)' }}
   animationTo={{ opacity: 1, transform: 'translate3d(0,0,0)' }}
@@ -61,6 +61,7 @@ export default function HomeSection() {
         </div>
         
       </div>
+     
       
       </div>
     );
