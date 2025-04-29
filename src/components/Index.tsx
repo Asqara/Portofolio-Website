@@ -28,6 +28,7 @@ export default function HomePage() {
   };
 
   useEffect(() => {
+    window.scrollTo({ top: 0, behavior: 'auto' });
     Aos.init();
     const handleScroll = () => {
       if (homeRef.current) {
@@ -54,7 +55,7 @@ export default function HomePage() {
   return (
     <div className="min-h-screen">
       <Navbar 
-        scrollToHome={() => scrollToSection(homeRef)}
+        scrollToHome={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
         scrollToAbout={() => scrollToSection(aboutRef)}
         scrollToProjects={() => scrollToSection(projectsRef)}
         scrollToContact={() => scrollToSection(contactRef)}
@@ -96,7 +97,7 @@ export default function HomePage() {
         data-aos-duration="800"
           className="fixed bottom-4 right-4 z-50">
             <button 
-              onClick={() => scrollToSection(homeRef)} 
+              onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })} 
               className="bg-gray-900 text-amber-300 dark:bg-amber-300 dark:text-gray-900 p-2 rounded-full shadow-lg hover:bg-gray-800 transition duration-300"
             >
               <MoveUp size={24} />

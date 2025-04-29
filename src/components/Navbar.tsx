@@ -67,7 +67,7 @@ export default function Navbar({
   return (
     <nav className="fixed w-full z-50 dark:bg-gray-800 bg-amber-300 text-white dark:text-amber-300 shadow-lg font-montserrat">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex items-center justify-between h-16">
+        <div className="flex justify-between items-center h-16">
           {/* Logo */}
           <div className="flex-shrink-0">
             <button onClick={scrollToHome} className="font-bold text-2xl font-montserrat">Asqara.</button>
@@ -75,7 +75,7 @@ export default function Navbar({
           
           {/* Desktop Menu */}
           <div className="hidden md:block">
-            <div className="ml-10 flex items-center space-x-4">
+            <div className="ml-10 flex items-center space-x-5">
               {navLinks.map((link) => (
                 <button
                   key={link.name}
@@ -92,11 +92,7 @@ export default function Navbar({
                   {link.name}
                 </button>
               ))}
-            </div>
-          </div>
-          
-          {/* Dark Mode Toggle & Mobile Menu Button */}
-          <div className="flex items-center gap-4">
+              <div className="flex items-center gap-4">
             <Switch />
             
             <div className="md:hidden">
@@ -109,6 +105,12 @@ export default function Navbar({
               </button>
             </div>
           </div>
+            </div>
+            
+          </div>
+          
+          {/* Dark Mode Toggle & Mobile Menu Button */}
+          
         </div>
       </div>
       
