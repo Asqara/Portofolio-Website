@@ -211,7 +211,7 @@ export default function ContactSection() {
 
                 {/* Instagram */}
                 <a
-                  href="https://instagram.com/asqaraa__"
+                  href="https://instagram.com/asqaraaa__"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="p-3 rounded-full backdrop-blur-md bg-white/20 dark:bg-black/20 border border-white/20 dark:border-white/10 hover:bg-white/30 dark:hover:bg-black/30 transition-all duration-300 group hover:-translate-y-1"
@@ -221,7 +221,7 @@ export default function ContactSection() {
 
                 {/* LinkedIn */}
                 <a
-                  href="https://linkedin.com/in/asqara"
+                  href="https://linkedin.com/in/asqaraa"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="p-3 rounded-full backdrop-blur-md bg-white/20 dark:bg-black/20 border border-white/20 dark:border-white/10 hover:bg-white/30 dark:hover:bg-black/30 transition-all duration-300 group hover:-translate-y-1"

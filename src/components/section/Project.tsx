@@ -22,10 +22,18 @@ export default function ProjectsSection() {
       id: "1",
       title: "Website Ormawa Eksekutif Pku",
       description:
-        "Website ormawa eksekutif pku dibuat untuk membranding digital ormawa ekse",
+        "Website resmi Ormawa Eksekutif PKU yang dikembangkan untuk memperkuat branding digital organisasi.",
       longDescription:
-        "Built with React, Node.js, and MongoDB. Features include real-time inventory, payment processing with Stripe, order tracking, and comprehensive analytics.",
-      technologies: ["React", "Node.js", "Laravel", "My Sql"],
+        "Platform ini dibangun menggunakan React, Node.js, dan MongoDB dengan integrasi Laravel dan MySQL pada sisi backend. Website ini mendukung pengelolaan konten dinamis, sistem inventori real-time, pemrosesan pembayaran melalui Stripe, pelacakan pesanan, hingga analitik menyeluruh untuk membantu pengambilan keputusan strategis.",
+      technologies: [
+        "React",
+        "Node.js",
+        "Laravel",
+        "MySQL",
+        "MongoDB",
+        "Stripe",
+      ],
+
       status: "Live",
       stars: 0,
       date: "2025",
