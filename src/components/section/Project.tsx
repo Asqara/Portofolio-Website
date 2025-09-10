@@ -15,11 +15,11 @@ import Link from "next/link";
 
 export default function ProjectsSection() {
   const [isDark, setIsDark] = useState(false);
-  const [hoveredProject, setHoveredProject] = useState(null);
+  const [hoveredProject, setHoveredProject] = useState("");
 
   const projects = [
     {
-      id: 1,
+      id: "1",
       title: "Website Ormawa Eksekutif Pku",
       description:
         "Website ormawa eksekutif pku dibuat untuk membranding digital ormawa ekse",
@@ -120,7 +120,7 @@ export default function ProjectsSection() {
                 <div
                   key={project.id}
                   onMouseEnter={() => setHoveredProject(project.id)}
-                  onMouseLeave={() => setHoveredProject(null)}
+                  onMouseLeave={() => setHoveredProject("")}
                   className="group relative"
                 >
                   {/* Project card */}
